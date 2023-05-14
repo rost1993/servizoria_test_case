@@ -22,10 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/unauthorized', [AuthenticatedSessionController::class, 'unauthorized']);
+Route::post('/currency', [CurrencyController::class, 'index']);
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
-    Route::post('/currency', [CurrencyController::class, 'index']);
     Route::post('/rate', [RateController::class, 'search']);
 });
 
